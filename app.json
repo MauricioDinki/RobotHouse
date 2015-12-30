@@ -1,0 +1,7 @@
+{
+  "name": "Robot House",
+  "description": "An Node app for IoT",
+  "repository": "https://github.com/MauricioDinki/RobotHouse",
+  "keywords": ["robot", "iot", "node"],
+  "image": "heroku/nodejs"
+}
