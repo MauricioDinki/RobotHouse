@@ -1,0 +1,33 @@
+{
+  "name": "silent-alarm",
+  "version": "0.1.0",
+  "description": "Check the movement in a room",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "NODE_PATH=./dist supervisor dist/server.js",
+    "ngrok": "./ngrok http -subdomain=robot 8000",
+    "gulp": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MauricioDinki/silent-alarm.git"
+  },
+  "author": "Mauricio Ivan Mejia Ramirez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MauricioDinki/silent-alarm/issues"
+  },
+  "homepage": "https://github.com/MauricioDinki/silent-alarm#readme",
+  "devDependencies": {
+    "babel-core": "^6.3.15",
+    "babel-preset-es2015": "^6.3.13",
+    "gulp": "^3.9.0",
+    "gulp-babel": "^6.1.1",
+    "gulp-watch": "^4.3.5"
+  },
+  "dependencies": {
+    "express": "^4.13.3",
+    "mongoose": "^4.3.0"
+  }
+}
