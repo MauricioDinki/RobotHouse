@@ -30,7 +30,9 @@ var conn = _mongoose2.default.connection;
 
 conn.on('error', console.error.bind(console, 'connection error:'));
 
-app.use('/movement', _api2.default);
-app.listen(port, function () {
-  return console.log('Server listening on port ' + port);
+conn.once('open', function () {
+  app.use('/movement', _api2.default);
+  app.listen(port, function () {
+    return console.log('Server listening on port ' + port);
+  });
 });

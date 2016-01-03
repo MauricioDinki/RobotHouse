@@ -1,5 +1,6 @@
 import express from 'express'
 import Movement from 'models'
+import SendPush from 'parse-push'
 
 const router = express.Router()
 
@@ -44,6 +45,9 @@ router.post('/', (req, res) => {
     }]
   }, function (err, doc) {
     if (err) return res.sendStatus(500).json(err)
+
+    SendPush('Movement Detected', 'Push Sended')
+
     res.json(doc)
   })
 

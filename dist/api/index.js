@@ -12,6 +12,10 @@ var _models = require('models');
 
 var _models2 = _interopRequireDefault(_models);
 
+var _parsePush = require('parse-push');
+
+var _parsePush2 = _interopRequireDefault(_parsePush);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var router = _express2.default.Router();
@@ -56,6 +60,9 @@ router.post('/', function (req, res) {
     }]
   }, function (err, doc) {
     if (err) return res.sendStatus(500).json(err);
+
+    (0, _parsePush2.default)('Movement Detected', 'Push Sended');
+
     res.json(doc);
   });
 });
