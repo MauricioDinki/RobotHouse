@@ -1,7 +1,12 @@
 import express from 'express'
-import api from 'api'
 import mongoose from 'mongoose'
 import uriUtil from 'mongodb-uri'
+import path from 'path'
+import swig from 'swig'
+import cons from 'consolidate'
+
+import movement from './routes/movement'
+import routes from './routes/index'
 
 const app = express()
 const port = process.env.PORT || 8000
@@ -15,7 +20,13 @@ let conn = mongoose.connection
 
 conn.on('error', console.error.bind(console, 'connection error:'))
 
+app.engine('html', cons.swig)
+app.set('view engine', 'html');
+app.set('views', path.join(__dirname, 'views'));
+
+app.use('/', routes)
+app.use('/movement', movement)
+
 conn.once('open', function() {
-  app.use('/movement', api)
   app.listen(port, () => console.log(`Server listening on port ${port}`))
 });

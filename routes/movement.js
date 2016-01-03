@@ -1,6 +1,7 @@
 import express from 'express'
-import Movement from 'models'
-import SendPush from 'parse-push'
+
+import Movement from '../models/'
+import SendPush from '../helpers/parse'
 
 const router = express.Router()
 
