@@ -7,6 +7,7 @@ import cons from 'consolidate'
 
 import movement from './routes/movement'
 import routes from './routes/index'
+import configuration from './routes/configuration'
 
 const app = express()
 const port = process.env.PORT || 8000
@@ -28,6 +29,7 @@ app.set('views', path.join(__dirname, 'views'))
 app.use(express.static('public'))
 app.use('/', routes)
 app.use('/movement', movement)
+app.use('/configuration', configuration)
 
 conn.once('open', function() {
   app.listen(port, () => console.log(`Server listening on port ${port}`))
