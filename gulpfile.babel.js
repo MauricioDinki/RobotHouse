@@ -1,14 +1,17 @@
 import gulp from 'gulp'
 import babel from 'gulp-babel'
 import watch from 'gulp-watch'
-import uglify from "gulp-uglify";
+import uglify from "gulp-uglify"
+import stylus from 'gulp-stylus'
+import nib from 'nib'
 
 const paths = {
   helpers: 'helpers/**/*.js',
   models: 'models/**/*.js',
 	routes: 'routes/**/*.js',
 	views: 'views/**/*',
-	server: 'server.js'
+	server: 'server.js',
+  styl: 'public/styl/**/*.styl',
 }
 
 gulp.task('helpers', () => {
@@ -57,4 +60,14 @@ gulp.task('views', () => {
 		.pipe(gulp.dest('dist/views'));
 })
 
-gulp.task('default', ['helpers', 'models', 'routes', 'server', 'views'])
+gulp.task('css', () => {
+  return gulp.src(paths.styl)
+    .pipe(watch(paths.styl))
+    .pipe(stylus({
+      'compress': true,
+      'use': nib()
+    }))
+    .pipe(gulp.dest('public/css/build'));
+})
+
+gulp.task('default', ['helpers', 'models', 'routes', 'server', 'views', 'css'])

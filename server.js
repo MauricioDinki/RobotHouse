@@ -21,9 +21,11 @@ let conn = mongoose.connection
 conn.on('error', console.error.bind(console, 'connection error:'))
 
 app.engine('html', cons.swig)
-app.set('view engine', 'html');
-app.set('views', path.join(__dirname, 'views'));
 
+app.set('view engine', 'html')
+app.set('views', path.join(__dirname, 'views'))
+
+app.use(express.static('public'))
 app.use('/', routes)
 app.use('/movement', movement)
 
