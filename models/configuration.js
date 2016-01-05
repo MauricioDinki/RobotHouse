@@ -1,7 +1,8 @@
 import mongoose, { Schema } from 'mongoose'
 
 let ConfigurationSchema = new Schema({
-  notifications: Boolean
+  notifications: Boolean,
+  username: String
 })
 
 let model = mongoose.model('Configuration', ConfigurationSchema)

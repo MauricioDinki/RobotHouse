@@ -4,6 +4,7 @@ import uriUtil from 'mongodb-uri'
 import path from 'path'
 import swig from 'swig'
 import cons from 'consolidate'
+import bodyParser from 'body-parser'
 
 import movement from './routes/movement'
 import routes from './routes/index'
@@ -27,6 +28,8 @@ app.set('view engine', 'html')
 app.set('views', path.join(__dirname, 'views'))
 
 app.use(express.static('public'))
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 app.use('/', routes)
 app.use('/movement', movement)
 app.use('/configuration', configuration)
